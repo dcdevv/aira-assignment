@@ -1,11 +1,13 @@
 import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FirstLevelArr, FourthLevelArr, SecondLevelArr, ThirdLevelArr } from '@app/static-data/countries.enum';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-tree-structure',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [JsonPipe, MatCardModule, MatGridListModule],
   templateUrl: './tree-structure.component.html',
   styleUrl: './tree-structure.component.scss'
 })
