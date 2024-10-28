@@ -1,67 +1,69 @@
-<div class="center">
-    <mat-grid-list cols="1" rowHeight="10:2">
+<mat-card class="dropdown-card" appearance="outlined">
+    <mat-card-header class="card-header">Dependent Dropdowns</mat-card-header>
+    <mat-card-content>
+        <mat-grid-list cols="1" rowHeight="5rem">
 
-        <!-- Country dropdown-->
-        <mat-grid-tile>
-            <mat-form-field appearance="fill" class="select-input-field">
-                <mat-select
-                    (selectionChange)="countryChanged($event.value)"
-                    placeholder="Select country">
-                    <mat-option [value]="">None</mat-option>
-                    <mat-option *ngFor="let country of countries" [value]="country.id">
-                        {{ country.name }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </mat-grid-tile>
+            <!-- Country dropdown-->
+            <mat-grid-tile>
+                <mat-form-field appearance="fill" class="select-input-field">
+                    <mat-select
+                        (selectionChange)="countryChanged($event.value)"
+                        placeholder="Select country">
+                        <mat-option [value]="">None</mat-option>
+                        <mat-option *ngFor="let country of countries" [value]="country.id">
+                            {{ country.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
 
-        <!-- State dropdown-->
-        <mat-grid-tile>
-            <mat-form-field appearance="fill" class="select-input-field">
-                <mat-select
-                    (selectionChange)="stateChanged($event.value)"
-                    [disabled]="!dynamicStateList.length"
-                    [class.disabledDropdown]="!dynamicStateList.length"
-                    [placeholder]="dynamicStateList.length ? 'Select state' : 'Please select country first'">
-                    <mat-option [value]="">None</mat-option>
-                    <mat-option *ngFor="let state of dynamicStateList" [value]="state.id">
-                        {{ state.name }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </mat-grid-tile>
-        
-        <!-- State dropdown-->
-        <mat-grid-tile>
-            <mat-form-field appearance="fill" class="select-input-field">
-                <mat-select
-                    (selectionChange)="districtChanged($event.value)"
-                    [disabled]="!dynamicDistrictList.length"
-                    [class.disabledDropdown]="!dynamicDistrictList.length"
-                    [placeholder]="dynamicDistrictList.length ? 'Select district' : 'Please select state first'">
-                    <mat-option [value]="">None</mat-option>
-                    <mat-option *ngFor="let district of dynamicDistrictList" [value]="district.id">
-                        {{ district.name }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </mat-grid-tile>
+            <!-- State dropdown-->
+            <mat-grid-tile>
+                <mat-form-field appearance="fill" class="select-input-field">
+                    <mat-select
+                        (selectionChange)="stateChanged($event.value)"
+                        [disabled]="!dynamicStateList.length"
+                        [class.disabledDropdown]="!dynamicStateList.length"
+                        [placeholder]="dynamicStateList.length ? 'Select state' : 'Please select country first'">
+                        <mat-option [value]="">None</mat-option>
+                        <mat-option *ngFor="let state of dynamicStateList" [value]="state.id">
+                            {{ state.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+            
+            <!-- State dropdown-->
+            <mat-grid-tile>
+                <mat-form-field appearance="fill" class="select-input-field">
+                    <mat-select
+                        (selectionChange)="districtChanged($event.value)"
+                        [disabled]="!dynamicDistrictList.length"
+                        [class.disabledDropdown]="!dynamicDistrictList.length"
+                        [placeholder]="dynamicDistrictList.length ? 'Select district' : 'Please select state first'">
+                        <mat-option [value]="">None</mat-option>
+                        <mat-option *ngFor="let district of dynamicDistrictList" [value]="district.id">
+                            {{ district.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
 
-        
-        <!-- Place dropdown-->
-        <mat-grid-tile>
-            <mat-form-field appearance="fill" class="select-input-field">
-                <mat-select
-                    [disabled]="!dynamicPlaceList.length"
-                    [class.disabledDropdown]="!dynamicPlaceList.length"
-                    [placeholder]="dynamicPlaceList.length ? 'Select place' : 'Please select district first'">
-                    <mat-option [value]="">None</mat-option>
-                    <mat-option *ngFor="let place of dynamicPlaceList" [value]="place.id">
-                        {{ place.name }}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </mat-grid-tile>
-    </mat-grid-list>
-
-</div>
+            
+            <!-- Place dropdown-->
+            <mat-grid-tile>
+                <mat-form-field appearance="fill" class="select-input-field">
+                    <mat-select
+                        [disabled]="!dynamicPlaceList.length"
+                        [class.disabledDropdown]="!dynamicPlaceList.length"
+                        [placeholder]="dynamicPlaceList.length ? 'Select place' : 'Please select district first'">
+                        <mat-option [value]="">None</mat-option>
+                        <mat-option *ngFor="let place of dynamicPlaceList" [value]="place.id">
+                            {{ place.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>

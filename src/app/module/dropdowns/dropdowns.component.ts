@@ -5,7 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FirstLevelArr, FourthLevelArr, SecondLevelArr, ThirdLevelArr } from '@app/static-data/countries.enum';
 import { Place } from '@app/static-data/info.model';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-dropdowns',
@@ -14,7 +14,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     NgFor,
     MatFormFieldModule,
     MatSelectModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule
   ],
   templateUrl: './dropdowns.component.html',
   styleUrl: './dropdowns.component.scss'
