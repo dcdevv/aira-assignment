@@ -2,9 +2,8 @@
     <mat-grid-list cols="1" rowHeight="10:2">
 
         <!-- Country dropdown-->
-        <!-- <mat-grid-tile><label>Country name: </label></mat-grid-tile> -->
         <mat-grid-tile>
-            <mat-form-field style="width:50%;" appearance="fill" class="select-input-field">
+            <mat-form-field appearance="fill" class="select-input-field">
                 <mat-select
                     (selectionChange)="countryChanged($event.value)"
                     placeholder="Select country">
@@ -17,9 +16,8 @@
         </mat-grid-tile>
 
         <!-- State dropdown-->
-        <!-- <mat-grid-tile><label>State name: </label></mat-grid-tile> -->
         <mat-grid-tile>
-            <mat-form-field style="width:50%;" appearance="fill" class="select-input-field">
+            <mat-form-field appearance="fill" class="select-input-field">
                 <mat-select
                     (selectionChange)="stateChanged($event.value)"
                     [disabled]="!dynamicStateList.length"
@@ -34,9 +32,8 @@
         </mat-grid-tile>
         
         <!-- State dropdown-->
-        <!-- <mat-grid-tile><label>District name:</label></mat-grid-tile> -->
         <mat-grid-tile>
-            <mat-form-field style="width:50%;" appearance="fill" class="select-input-field">
+            <mat-form-field appearance="fill" class="select-input-field">
                 <mat-select
                     (selectionChange)="districtChanged($event.value)"
                     [disabled]="!dynamicDistrictList.length"
@@ -52,9 +49,8 @@
 
         
         <!-- Place dropdown-->
-        <!-- <mat-grid-tile><label>Place name:</label></mat-grid-tile> -->
         <mat-grid-tile>
-            <mat-form-field style="width:50%;" appearance="fill" class="select-input-field">
+            <mat-form-field appearance="fill" class="select-input-field">
                 <mat-select
                     [disabled]="!dynamicPlaceList.length"
                     [class.disabledDropdown]="!dynamicPlaceList.length"
