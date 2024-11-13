@@ -23,6 +23,12 @@ export class DashboardComponent {
 
   public menu: Menu = [
     {
+      title: 'Table',
+      icon: 'grid',
+      link: '/feature-table',
+      color: '#ff7f0e',
+    },
+    {
       title: 'Tree View',
       icon: 'home',
       link: '/tree-structure',
@@ -39,6 +45,4 @@ export class DashboardComponent {
   public toggle(): void {
     this.opened = !this.opened;
   }
-
-  
 }
