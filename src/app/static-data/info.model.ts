@@ -1,5 +1,6 @@
 export interface Place {
     id: string,
     parentId: string,
-    name: string
+    name: string,
+    child: Place
 }

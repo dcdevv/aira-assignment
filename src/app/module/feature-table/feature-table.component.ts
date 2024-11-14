@@ -4,7 +4,7 @@ import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/
 import { MatIcon } from '@angular/material/icon';
 import { MatCard, MatCardContent, MatCardHeader } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { NgIf, TitleCasePipe } from '@angular/common';
+import { NgClass, NgIf, TitleCasePipe } from '@angular/common';
 import { ELEMENT_DATA, Group, PeriodicElement } from '@app/static-data/table.model';
 
 @Component({
@@ -20,7 +20,8 @@ import { ELEMENT_DATA, Group, PeriodicElement } from '@app/static-data/table.mod
     MatCardHeader,
     MatCardContent,
     MatChipsModule,
-    TitleCasePipe
+    TitleCasePipe,
+    NgClass
   ],
   templateUrl: './feature-table.component.html',
   styleUrl: './feature-table.component.scss'
@@ -47,31 +48,22 @@ export class FeatureTableComponent implements OnInit {
 
   public dropHeader(event: CdkDragDrop<string[]>): void {
 
-    console.log('dropHeader - event', event.item.data);
-   
-    if (!this.selectedColumns.includes(event.item.data)) {
-      this.selectedColumns.push(event.item.data);
+    if(typeof event.item.data === 'string') {
+      if (!this.selectedColumns.includes(event.item.data)) {
+        this.selectedColumns.push(event.item.data);
+
+        this.groupBy(event.item.data);
+      }
     }
-  }
 
-  public dragHeader(event: string): void {
-
-    console.log('dragHeader - event', event);
-   
-    if (!this.selectedColumns.includes(event)) {
-      this.selectedColumns.push(event);
-
-      this.groupBy(event);
-    }
   }
   
   public dropRow(event: CdkDragDrop<string>): void {
 
-    console.log('dropRow - event', event);
-    
     const previousIndex = this._alldata.findIndex(d => d === event.item.data);
 
     moveItemInArray(this._alldata, previousIndex, event.currentIndex);
+
     this.table.renderRows();
   }
 

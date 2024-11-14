@@ -13,7 +13,7 @@ table {
     border-radius: 5px;
 }
 
-.group-header-row {
+.group-header-cell {
     background-color: rgb(230, 214, 214);
     border-end-end-radius: 5px;
 }
@@ -50,17 +50,15 @@ table {
 .groiping-list {
     display: flex;
     flex-wrap: wrap;
-    width: 97%;
-    max-width: 100%;
     gap: 15px;
     padding: 15px;
     border: solid 1px #ccc;
-    min-height: 60px;
+    min-height: 30px;
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 1rem;
 }
-  
+
 .group-item {
     padding: 20px 10px;
     border: solid 1px #ccc;
@@ -80,6 +78,44 @@ mat-chip-set {
     flex-wrap: wrap;
 }
 
+.example-handle {
+    position: relative;
+    right: 0;
+    color: #ccc;
+    cursor: move;
+}
+
+.header-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .group-text {
     padding-bottom: 1rem;
+}
+
+.group_level_1 {
+    .group-header-cell {
+        padding-left: 25px;
+    }
+}
+
+.group_level_2 {
+    .group-header-cell {
+        padding-left: 45px;
+    }
+}
+
+.group_level_3 {
+    .group-header-cell {
+        padding-left: 65px;
+    }
+}
+
+.group_level_4 {
+    .group-header-cell {
+        padding-left: 85px;
+    }
 }

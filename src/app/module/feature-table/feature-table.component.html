@@ -1,12 +1,12 @@
 <mat-card class="body-card" appearance="outlined">
     <mat-card-header class="card-header">Table - Header grouping with drag and drop feature</mat-card-header>
     <mat-card-content>
-            
         <div
             cdkDropList
             [cdkDropListData]="selectedColumns"
             class="groiping-list"
-            (cdkDropListDropped)="dropHeader($event)">
+            (cdkDropListDropped)="dropHeader($event)"
+            #listOne="cdkDropList">
 
             <mat-chip-set aria-label="Field selection">
                 @for (column of selectedColumns; track column) {
@@ -23,10 +23,15 @@
             class="mat-elevation-z8" 
             cdkDropList
             (cdkDropListDropped)="dropRow($event)" 
-            cdkDropListData="dataSource">
+            cdkDropListData="dataSource"
+            #listTwo="cdkDropList" [cdkDropListConnectedTo]="[listOne]">
 
             <ng-container matColumnDef="position">
-                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'position'" (cdkDragStarted)="dragHeader('position')">Position</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'position'">
+                    <div class="header-content">
+                        <span>Position</span><mat-icon class="example-drag-cursor" cdkDragHandle>drag_handle</mat-icon>
+                    </div>
+                </mat-header-cell>
                 <mat-cell *matCellDef="let element">
                     <mat-icon class="example-drag-cursor">reorder</mat-icon>
                     <span>{{element.position}}</span>
@@ -34,17 +39,29 @@
             </ng-container>
 
             <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'name'" (cdkDragStarted)="dragHeader('name')">Name</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'name'">
+                    <div class="header-content">
+                        <span>Name</span><mat-icon class="example-drag-cursor" cdkDragHandle>drag_handle</mat-icon>
+                    </div>
+                </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="weight">
-                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'weight'" (cdkDragStarted)="dragHeader('weight')">Weight</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'weight'">
+                    <div class="header-content">
+                        <span>Weight</span><mat-icon class="example-drag-cursor" cdkDragHandle>drag_handle</mat-icon>
+                    </div>
+                </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="symbol">
-                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'symbol'" (cdkDragStarted)="dragHeader('symbol')">Symbol</mat-header-cell>
+                <mat-header-cell *matHeaderCellDef cdkDrag [cdkDragData]="'symbol'">
+                    <div class="header-content">
+                        <span>Symbol</span><mat-icon class="example-drag-cursor" cdkDragHandle>drag_handle</mat-icon>
+                    </div>
+                </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
             </ng-container>
 
@@ -53,14 +70,24 @@
 
             <!-- Group header -->
             <ng-container matColumnDef="groupHeader">
-                <mat-cell *matCellDef="let group" [attr.colspan]="displayedColumns.length" class="group-header-row">
+                <mat-cell *matCellDef="let group" [attr.colspan]="displayedColumns.length" class="group-header-cell">
                     <mat-icon *ngIf="group.expanded" class="arrrow-icon">expand_less</mat-icon>
                     <mat-icon *ngIf="!group.expanded" class="arrrow-icon">expand_more</mat-icon>
                     <span>{{ selectedColumns[group.level-1] | titlecase }} = {{ group[selectedColumns[group.level-1]] }} ({{ group.totalCounts }})</span>
                 </mat-cell>
             </ng-container>
 
-            <tr mat-row *matRowDef="let row; columns: ['groupHeader']; when: isGroup" (click)="groupHeaderClick(row)"></tr>
+            <mat-row
+                *matRowDef="let row; columns: ['groupHeader']; when: isGroup"
+                (click)="groupHeaderClick(row)"
+                [class.group-row]="row?.level === 1"
+                [ngClass]="{
+                    'group_level_1': row?.level === 1,
+                    'group_level_2': row?.level === 2,
+                    'group_level_3': row?.level === 3,
+                    'group_level_4': row?.level === 4
+                }">
+            </mat-row>
         </mat-table>
     </mat-card-content>
 </mat-card>
